@@ -82,6 +82,64 @@
   }
   .nav-staff::after{display:none;}
   .nav-staff:hover{border-color:#111;color:#111 !important;}
+  /* ---------- Tools dropdown ---------- */
+  .nav-tools-wrap{position:relative;}
+  .nav-tools-btn{
+    font-size:14px;font-weight:500;color:var(--black);
+    background:none;border:none;cursor:pointer;padding:6px 0;
+    font-family:inherit;display:flex;align-items:center;gap:5px;
+  }
+  .nav-tools-btn .arr{font-size:9px;transition:transform .2s;display:inline-block;}
+  .nav-tools-wrap:hover .arr{transform:rotate(180deg);}
+  .nav-tools-menu{
+    position:absolute;top:calc(100% + 12px);left:50%;
+    transform:translateX(-50%) translateY(-6px);
+    background:#fff;border:1px solid #e5e5e5;
+    box-shadow:0 12px 32px rgba(0,0,0,.12);
+    min-width:220px;opacity:0;pointer-events:none;
+    transition:opacity .2s,transform .2s;z-index:200;
+  }
+  .nav-tools-wrap:hover .nav-tools-menu,
+  .nav-tools-wrap:focus-within .nav-tools-menu{
+    opacity:1;pointer-events:auto;transform:translateX(-50%) translateY(0);
+  }
+  .nav-tools-menu a{
+    display:flex;align-items:center;gap:12px;
+    padding:13px 18px;font-size:13px;font-weight:500;color:#111;
+    border-bottom:1px solid #f5f5f7;transition:background .15s;
+    white-space:nowrap;
+  }
+  .nav-tools-menu a:last-child{border-bottom:none;}
+  .nav-tools-menu a:hover{background:#fff8f5;color:var(--orange);}
+  .nav-tools-menu a::after{display:none!important;}
+  .nav-tools-menu .ti{font-size:18px;width:24px;text-align:center;}
+  .nav-tools-menu .tl strong{display:block;font-size:13px;font-weight:600;color:#111;}
+  .nav-tools-menu .tl span{font-size:11px;color:#999;font-weight:400;}
+
+  /* ---------- Tools section ---------- */
+  .tools-section{background:var(--offwhite);padding:100px 0;border-top:1px solid #e5e5e5;}
+  .tools-grid{display:grid;grid-template-columns:1fr 1fr;gap:24px;margin-top:48px;}
+  .tool-card{
+    background:#fff;border:1px solid #e5e5e5;padding:48px 40px;
+    display:flex;flex-direction:column;gap:16px;
+    transition:border-color .25s,box-shadow .25s;
+  }
+  .tool-card:hover{border-color:var(--orange);box-shadow:0 8px 32px rgba(255,94,20,.1);}
+  .tool-card .tc-icon{font-size:36px;line-height:1;}
+  .tool-card .tc-name{font-size:22px;font-weight:700;color:var(--ink);letter-spacing:-.3px;}
+  .tool-card .tc-desc{font-size:15px;color:var(--gray);line-height:1.7;flex:1;}
+  .tool-card .tc-launch{
+    display:inline-block;background:var(--orange);color:#fff;
+    padding:13px 28px;font-size:12px;font-weight:700;letter-spacing:.8px;
+    text-transform:uppercase;align-self:flex-start;margin-top:8px;
+    transition:opacity .2s,transform .2s;
+  }
+  .tool-card .tc-launch:hover{opacity:.88;transform:translateY(-1px);}
+  .tool-card .tc-launch::after{display:none!important;}
+  @media(max-width:768px){
+    .tools-grid{grid-template-columns:1fr;}
+  }
+
   .hamburger{
     display:none;background:none;border:none;cursor:pointer;padding:8px;
     flex-direction:column;gap:5px;
@@ -454,8 +512,21 @@
       <a href="#about">About</a>
       <a href="#services">Services</a>
       <a href="#portfolio">Portfolio</a>
+      <a href="#tools">Tools</a>
       <a href="#contact">Contact</a>
-      <a href="/lmg-website/staff/" class="nav-staff">Staff Login</a>
+      <div class="nav-tools-wrap">
+        <button class="nav-tools-btn">Tools <span class="arr">▼</span></button>
+        <div class="nav-tools-menu">
+          <a href="https://blackrockagent008.github.io/lmg-estimator/" target="_blank" rel="noopener">
+            <span class="ti">🧮</span>
+            <span class="tl"><strong>Master Estimator</strong><span>Build project cost estimates</span></span>
+          </a>
+          <a href="https://blackrockagent008.github.io/lmg-estimator/draw-request.html" target="_blank" rel="noopener">
+            <span class="ti">📋</span>
+            <span class="tl"><strong>Draw Request</strong><span>AIA G702/G703 draw forms</span></span>
+          </a>
+        </div>
+      </div>
       <a href="mailto:adrian@lmg-gc.com" class="nav-cta">Get a Quote</a>
     </div>
   </div>
@@ -657,6 +728,31 @@
       <span class="pill">Corpus Christi</span>
       <span class="pill">Fredericksburg</span>
       <span class="pill">Statewide</span>
+    </div>
+  </div>
+</section>
+
+<!-- ============ TOOLS ============ -->
+<section class="tools-section" id="tools">
+  <div class="container">
+    <div class="reveal">
+      <div class="eyebrow">Staff Tools</div>
+      <h2>Project Tools</h2>
+      <p class="section-sub">Built for LMG field teams and project managers. Access your estimating and draw request tools directly from here.</p>
+    </div>
+    <div class="tools-grid">
+      <div class="tool-card reveal d1">
+        <div class="tc-icon">🧮</div>
+        <div class="tc-name">Master Estimator</div>
+        <div class="tc-desc">Generate detailed construction cost estimates across all 23 CSI divisions. Upload plans, apply location multipliers, build Low / Base / High scenarios, and export to ProCore or PDF.</div>
+        <a href="https://blackrockagent008.github.io/lmg-estimator/" target="_blank" rel="noopener" class="tc-launch">Open Estimator →</a>
+      </div>
+      <div class="tool-card reveal d2">
+        <div class="tc-icon">📋</div>
+        <div class="tc-name">Draw Request Manager</div>
+        <div class="tc-desc">Submit AIA G702/G703 draw applications directly to your lender. Set project budget once — every draw auto-calculates retainage, previous billings, and balance remaining.</div>
+        <a href="https://blackrockagent008.github.io/lmg-estimator/draw-request.html" target="_blank" rel="noopener" class="tc-launch">Open Draw Request →</a>
+      </div>
     </div>
   </div>
 </section>
